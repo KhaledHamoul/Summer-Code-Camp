@@ -82,9 +82,10 @@
                           <li><b>MENTOR : &nbsp</b> ` + child.mentor + ` </li>
                           <li><b>SKILLS : &nbsp</b> ` + child.skills + ` </li>
                         </ul>
-                        <button onclick="downloadFile('`+ child.nameProject + `')" style="width:22%;margin-left:4px" class="btn btn-primary" type="button">
+                        <button onclick="downloadFile(`+ child.projectName +`)"  style="width:22%;margin-left:4px" class="btn btn-primary" type="button">
                           <i class="fa fa-download"></i>
                           Download</button>
+                          
                           <br>
                           
                         <button style="width:22%;margin-top:5px" class="btn btn-primary" data-dismiss="modal" type="button">
@@ -105,26 +106,41 @@
         listProjectsModals.innerHTML = projectModalsHTML;
       });
 
+
+
     }
 
     setProjects();
+   
  
+    // download le cahier des charges 
+    function downloadFile(projectName){
 
-function downloadFile(projectName){
-
-                       
-                        var ref = firebase.storage();
-                        ref.ref('cahiers/1CS.pdf').getDownloadURL().then(function(url) {
-                        // `url` is the download URL for 'images/stars.jpg'
-                         
-                        var link = document.createElement("a");
-                        link.download = projectName;
-                        link.href = url;
-                        link.click();
                         
-                        }).catch(function(error) {
-                        // Handle any errors
-                        alert("error while downloading");
-                        });
-                      
+                            var ref = firebase.storage();
+                            ref.ref('cahiers/'+ projectName + '.pdf').getDownloadURL().then(function(url) {
+                            // `url` is the download URL for 'images/stars.jpg'
+                            
+                            var link = document.createElement("a");
+                            link.download = projectName;
+                            link.href = url;
+                            link.click();
+                            
+                            }).catch(function(error) {
+                            // Handle any errors
+                            alert("error while downloading");
+                            });
+                        
+    }
+
+
+function sendMail() {
+    var email = document.getElementById('email').value;
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var msg = document.getElementById('message').value;
+    if (( email != "")&&( name != "")&&( phone != "")&&( msg != "")){
+        Email.send(email ,"fk_hamoul@esi.dz","SUMMER CODE CAMP","NAME: " + name + "<br>MESSAGE:" + msg,"smtp.elasticemail.com","fk_hamoul@esi.dz","6c52b539-01b6-4ac3-bfd0-c2380774350b");
+        window.location.href = 'index.html';
+    }
 }
