@@ -75,7 +75,7 @@
                       <div class="modal-body">
                         <!-- Project Details Go Here -->
                         <h2 class="text-uppercase">` + child.nameProject + `</h2>
-                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                        <p class="item-intro text-muted"></p>
                         <img src="`+ child.photo + `"  class="img-fluid d-block mx-auto"  alt="">
                         <p>` + child.summary + `</p>
                         <ul class="list-inline" >
@@ -140,7 +140,7 @@ function sendMail() {
     var phone = document.getElementById('phone').value;
     var msg = document.getElementById('message').value;
     if (( email != "")&&( name != "")&&( phone != "")&&( msg != "")){
-        Email.send(email ,"fk_hamoul@esi.dz","SUMMER CODE CAMP","NAME: " + name + "<br>MESSAGE:" + msg,"smtp.elasticemail.com","fk_hamoul@esi.dz","6c52b539-01b6-4ac3-bfd0-c2380774350b");
-        
+        Email.send(email ,"fm_khodja@esi.dz","SUMMER CODE CAMP","NAME: " + name + "<br>MESSAGE:" + msg,"smtp.elasticemail.com","fk_hamoul@esi.dz","6c52b539-01b6-4ac3-bfd0-c2380774350b");
+       // alert('sent');
     }
 }
