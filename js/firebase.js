@@ -141,6 +141,6 @@ function sendMail() {
     var msg = document.getElementById('message').value;
     if (( email != "")&&( name != "")&&( phone != "")&&( msg != "")){
         Email.send(email ,"fk_hamoul@esi.dz","SUMMER CODE CAMP","NAME: " + name + "<br>MESSAGE:" + msg,"smtp.elasticemail.com","fk_hamoul@esi.dz","6c52b539-01b6-4ac3-bfd0-c2380774350b");
-        window.location.href = 'index.html';
+        
     }
 }
