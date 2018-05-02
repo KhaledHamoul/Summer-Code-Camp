@@ -89,7 +89,7 @@
         
         var succedAlert = document.getElementById('success');
         
-        if((firstName != "")&&(name != "")&&(email != "")&&(school != "")&&(level != "")&&(motivation != "")&&(skills != ""))
+        if((firstName != "")&&(name != "")&&(email != "")&&(school != "")&&(level != "")&&(motivation != "")&&(skills != "")(github != "")&&(facebook != ""))
         
               database.ref('Mentors/' + key).set({
                                 firstName: firstName,
