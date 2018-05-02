@@ -13,8 +13,8 @@
   var database = firebase.database();
   
   // set new project
-   function saveAnalyseRadio(){
-        key = firebase.database().ref('Projects').push().key;
+   function newProject(){
+       var key = firebase.database().ref('Projects').push().key;
          
               database.ref('Projects/' + key).set({
                                 nameProject: "Team App",
@@ -28,12 +28,53 @@
 
    }
 
-    //saveAnalyseRadio();
+   // register a participant
+   function newParticipant(){
+        var key = firebase.database().ref('participants').push().key;
+        
+        var firstName = document.getElementById('first-name').value;
+        var name = document.getElementById('family-name').value;
+        var email = document.getElementById('email').value;
+        var school = document.getElementById('school').value; 
+        var level = document.getElementById('study-level').value;
+        var motivation = document.getElementById('motivation').value;
+        var skills = document.getElementById('skills').value;
+        var facebook = document.getElementById('facebook').value;
+        var github = document.getElementById('github').value;
+        var linkedin = document.getElementById('linkedin').value;
 
+        var succedAlert = document.getElementById('success');
+        if((firstName != "")&&(name != "")&&(email != "")&&(school != "")&&(level != "")&&(motivation != "")&&(skills != ""))
+              database.ref('participants/' + key).set({
+                                firstName: firstName,
+                                famillyName: name,
+                                email : email,
+                                school: school ,
+                                level: level ,
+                                motivation: motivation,
+                                skills: skills,
+                                facebook:facebook,
+                                github: github,
+                                linkedin: linkedin
+                               
+                            }).then(function(){
+                                
+                                succedAlert.innerHTML = `<div  class="alert alert-success alert-dismissible fade show" ><strong>Congratulations ! </strong>You're now registered, stay tuned for the confirmation.
+                                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                        </div>` ;
+                                
+                            }).catch(function(){
+                                 succedAlert.innerHTML = `<div  class="alert alert-danger alert-dismissible fade show" ><strong>Error ! </strong>try to register again.
+                                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                        </div>` ;
+                            });
 
-  var listProjects = document.getElementById('projectsList');
-  var listProjectsModals = document.getElementById('projectModals');
- // get all projects 
+   }
+
+    var listProjects = document.getElementById('projectsList');
+    var listProjectsModals = document.getElementById('projectModals');
+    
+    // get all projects 
     function setProjects(){
         
         var ref = database.ref('Projects');
@@ -112,7 +153,6 @@
 
     setProjects();
    
- 
     // download le cahier des charges 
     function downloadFile(projectName){
 
@@ -133,14 +173,16 @@
                         
     }
 
-
-function sendMail() {
-    var email = document.getElementById('email').value;
-    var name = document.getElementById('name').value;
-    var phone = document.getElementById('phone').value;
-    var msg = document.getElementById('message').value;
-    if (( email != "")&&( name != "")&&( phone != "")&&( msg != "")){
-        Email.send(email ,"fm_khodja@esi.dz","SUMMER CODE CAMP","NAME: " + name + "<br>MESSAGE:" + msg,"smtp.elasticemail.com","fk_hamoul@esi.dz","6c52b539-01b6-4ac3-bfd0-c2380774350b");
-       // alert('sent');
+    // contact us 
+    function sendMail() {
+        var email = document.getElementById('email').value;
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var msg = document.getElementById('message').value;
+        if (( email != "")&&( name != "")&&( phone != "")&&( msg != "")){
+            Email.send(email ,"fm_khodja@esi.dz","SUMMER CODE CAMP","NAME: " + name + "<br>MESSAGE:" + msg,"smtp.elasticemail.com","fk_hamoul@esi.dz","6c52b539-01b6-4ac3-bfd0-c2380774350b");
+        // alert('sent');
+        }
     }
-}
+
+
