@@ -64,7 +64,7 @@
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Registration</h2>
-            <h3 class="section-subheading text-muted">Join us, Be a part of the Summer Code Camp.</h3>
+            <h3 class="section-subheading text-muted">Join us, Be a mentor.</h3>
           </div>
         </div>
         <div class="row">
@@ -72,7 +72,6 @@
             <form id="contactForm" name="sentMessage" novalidate>
               <div class="row">
                 <div class="col-md-8 col-centered">
-                
                   <div class="form-group">
                     <label for="first-name">First Name *</label>
                     <input class="form-control" id="first-name" type="text" required data-validation-required-message="Please enter your First Name.">
@@ -89,6 +88,11 @@
                     <p class="help-block text-danger"></p>
                   </div>
                   <div class="form-group">
+                    <label for="phone">Phone *</label>
+                    <input class="form-control" id="phone" type="number" required data-validation-required-message="Please enter your phone number.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
                     <label for="school">Your school</label>
                     <select class="form-control" id="school" required data-validation-required-message="Please select your school.">
                       <option selected>ESI</option>
@@ -97,7 +101,6 @@
                       <option>Others</option>
                     </select>
                   </div>
-                  
                   <div class="form-group">
                     <label for="study-level">Study level *</label>
                     <select class="form-control" id="study-level" required data-validation-required-message="Please select your study level.">
@@ -121,25 +124,24 @@
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <label for="facebook">Facebook</label>
-                  <input class="form-control" id="facebook" type="url">
+                  <label for="facebook">Facebook *</label>
+                  <input class="form-control" id="facebook" type="url" required data-validation-required-message="Please enter your Facebook.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <label for="github">Github</label>
-                  <input class="form-control" id="github" type="url">
+                  <label for="github">Github *</label>
+                  <input class="form-control" id="github" type="url" required data-validation-required-message="Please enter your Github.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <label for="linkedin">Linkedin</label>
-                  <input class="form-control" id="linkedin" type="url">
+                  <label for="linkedin">Linkedin *</label>
+                  <input class="form-control" id="linkedin" type="url" required data-validation-required-message="Please enter your Linkedin.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-lg-12 text-center">
                   <div id="success"></div>
-                  
-                  <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" onclick="newParticipant()" >Send</button>
+                  <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit" >Send</button>
                 </div>
             </form>
           </div>
