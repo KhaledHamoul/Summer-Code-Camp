@@ -45,8 +45,8 @@
         var linkedin = document.getElementById('linkedin');
 
         var succedAlert = document.getElementById('success');
-        if((firstName != "")&&(name != "")&&(email != "")&&(school != "")&&(level != "")&&(motivation != "")&&(skills != ""))
-        if(selectedProject != "")
+        if((firstName.value != "")&&(name.value != "")&&(email.value != "")&&(school.value != "")&&(level.value != "")&&(motivation.value != "")&&(skills.value != ""))
+        if(selectedProject.value != "")
               database.ref('participants/' + key).set({
                                 firstName: firstName.value,
                                 famillyName: name.value,
@@ -65,7 +65,7 @@
                                 succedAlert.innerHTML = `<div  class="alert alert-success alert-dismissible fade show" ><strong>Congratulations ! </strong>You're now registered, stay tuned for the confirmation.
                                                          <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                         </div>` ;
-                            firstName.value = name.value =  email.value =  level.value = motivation.value  = "";
+                            firstName.value = name.value = school.value =  email.value =  level.value = motivation.value  = "";
                             selectedProject.value = skills.value = facebook.value = github.value = linkedin.value = "";
                            }).catch(function(){
                                  succedAlert.innerHTML = `<div  class="alert alert-danger alert-dismissible fade show" ><strong>Error ! </strong>try to register again.
@@ -79,41 +79,43 @@
    function newMentor(){
         var key = firebase.database().ref('Mentors').push().key;
         
-        var firstName = document.getElementById('first-name').value;
-        var name = document.getElementById('family-name').value;
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
-        var school = document.getElementById('school').value; 
-        var level = document.getElementById('study-level').value;
-        var motivation = document.getElementById('motivation').value;
-        var skills = document.getElementById('skills').value;
-        var facebook = document.getElementById('facebook').value;
-        var github = document.getElementById('github').value;
-        var linkedin = document.getElementById('linkedin').value;
+        var firstName = document.getElementById('first-name');
+        var name = document.getElementById('family-name');
+        var email = document.getElementById('email');
+        var phone = document.getElementById('phone');
+        var school = document.getElementById('school'); 
+        var level = document.getElementById('study-level');
+        var motivation = document.getElementById('motivation');
+        var skills = document.getElementById('skills');
+        var facebook = document.getElementById('facebook');
+        var github = document.getElementById('github');
+        var linkedin = document.getElementById('linkedin');
         
         var succedAlert = document.getElementById('success');
         
-        if((firstName != "")&&(name != "")&&(email != "")&&(school != "")&&(level != ""))
-        if((motivation != "")&&(skills != "")&&(github != "")&&(facebook != ""))
+        if((firstName.value != "")&&(name.value != "")&&(email.value != "")&&(school.value != "")&&(level.value != ""))
+        if((motivation.value != "")&&(skills.value != "")&&(github.value != "")&&(facebook.value != ""))
         
               database.ref('Mentors/' + key).set({
-                                firstName: firstName,
-                                famillyName: name,
-                                email : email,
-                                phone: phone,
-                                school: school ,
-                                level: level ,
-                                motivation: motivation,
-                                skills: skills,
-                                facebook:facebook,
-                                github: github,
-                                linkedin: linkedin
+                                firstName: firstName.value,
+                                famillyName: name.value,
+                                email : email.value,
+                                phone: phone.value,
+                                school: school.value ,
+                                level: level.value ,
+                                motivation: motivation.value,
+                                skills: skills.value,
+                                facebook:facebook.value,
+                                github: github.value,
+                                linkedin: linkedin.value
                                
                             }).then(function(){
                                 
                                 succedAlert.innerHTML = `<div  class="alert alert-success alert-dismissible fade show" ><strong>Congratulations ! </strong>You're now registered, stay tuned for the confirmation.
                                                          <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                         </div>` ;
+                             firstName.value = name.value =  email.value =  level.value = motivation.value  = "";
+                            phone.value = school.value = skills.value = facebook.value = github.value = linkedin.value = "";
                                 
                             }).catch(function(){
                                  succedAlert.innerHTML = `<div  class="alert alert-danger alert-dismissible fade show" ><strong>Error ! </strong>try to register again.
