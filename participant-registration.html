@@ -113,6 +113,13 @@
                   </select>
                 </div>
                 <div class="form-group">
+                  <label for="motivation">Project *</label>
+                  <select class="form-control" id="projectList"  required data-validation-required-message="Please choose a project.">
+                    <option selected disabled value="" class="text-hide"></option>
+                  </select>
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
                   <label for="motivation">Your motivation *</label>
                   <textarea class="form-control" id="motivation"  required data-validation-required-message="Please enter your motivation."></textarea>
                   <p class="help-block text-danger"></p>
@@ -200,6 +207,10 @@
 
      <!-- script of firebase  -->
     <script src="js/firebase.js"></script>
+    <script>
+        setProjectList();
+        //newProject();
+    </script>
 
   </body>
 

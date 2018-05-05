@@ -32,38 +32,42 @@
    function newParticipant(){
         var key = firebase.database().ref('participants').push().key;
         
-        var firstName = document.getElementById('first-name').value;
-        var name = document.getElementById('family-name').value;
-        var email = document.getElementById('email').value;
-        var school = document.getElementById('school').value; 
-        var level = document.getElementById('study-level').value;
-        var motivation = document.getElementById('motivation').value;
-        var skills = document.getElementById('skills').value;
-        var facebook = document.getElementById('facebook').value;
-        var github = document.getElementById('github').value;
-        var linkedin = document.getElementById('linkedin').value;
+        var firstName = document.getElementById('first-name');
+        var name = document.getElementById('family-name');
+        var email = document.getElementById('email');
+        var school = document.getElementById('school'); 
+        var level = document.getElementById('study-level');
+        var selectedProject = document.getElementById('projectList');
+        var motivation = document.getElementById('motivation');
+        var skills = document.getElementById('skills');
+        var facebook = document.getElementById('facebook');
+        var github = document.getElementById('github');
+        var linkedin = document.getElementById('linkedin');
 
         var succedAlert = document.getElementById('success');
         if((firstName != "")&&(name != "")&&(email != "")&&(school != "")&&(level != "")&&(motivation != "")&&(skills != ""))
+        if(selectedProject != "")
               database.ref('participants/' + key).set({
-                                firstName: firstName,
-                                famillyName: name,
-                                email : email,
-                                school: school ,
-                                level: level ,
-                                motivation: motivation,
-                                skills: skills,
-                                facebook:facebook,
-                                github: github,
-                                linkedin: linkedin
+                                firstName: firstName.value,
+                                famillyName: name.value,
+                                email : email.value,
+                                school: school.value ,
+                                level: level.value ,
+                                project :selectedProject.value,
+                                motivation: motivation.value,
+                                skills: skills.value,
+                                facebook:facebook.value,
+                                github: github.value,
+                                linkedin: linkedin.value
                                
                             }).then(function(){
                                 
                                 succedAlert.innerHTML = `<div  class="alert alert-success alert-dismissible fade show" ><strong>Congratulations ! </strong>You're now registered, stay tuned for the confirmation.
                                                          <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                         </div>` ;
-                                
-                            }).catch(function(){
+                            firstName.value = name.value =  email.value =  level.value = motivation.value = skills.value = facebook.value = github.value = linkedin.value = "";
+                            selectedProject.value = "";
+                           }).catch(function(){
                                  succedAlert.innerHTML = `<div  class="alert alert-danger alert-dismissible fade show" ><strong>Error ! </strong>try to register again.
                                                          <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                         </div>` ;
@@ -171,13 +175,13 @@
                           <li><b>MENTOR : &nbsp</b> ` + child.mentor + ` </li>
                           <li><b>SKILLS : &nbsp</b> ` + child.skills + ` </li>
                         </ul>
-                        <button onclick="downloadFile(`+ child.projectName +`)"  style="width:22%;margin-left:4px" class="btn btn-primary" type="button">
+                        <button onclick="downloadFile(`+ child.projectName +`)"  style="width:150px;margin-left:4px" class="btn btn-primary" type="button">
                           <i class="fa fa-download"></i>
                           Download</button>
                           
                           <br>
                           
-                        <button style="width:22%;margin-top:5px" class="btn btn-primary" data-dismiss="modal" type="button">
+                        <button style="width:150px;margin-top:5px" class="btn btn-primary" data-dismiss="modal" type="button">
                           <i class="fa fa-times"></i>
                           Close</button>
                       </div>
@@ -231,6 +235,21 @@
             Email.send(email ,"fm_khodja@esi.dz","SUMMER CODE CAMP","NAME: " + name + "<br>MESSAGE:" + msg,"smtp.elasticemail.com","fk_hamoul@esi.dz","6c52b539-01b6-4ac3-bfd0-c2380774350b");
         // alert('sent');
         }
+    }
+
+    // list of porjects for registration 
+    function setProjectList(){
+      
+       var ref = database.ref('Projects');
+
+        ref.on('value', function(snapshot) {
+        var list = document.getElementById('projectList');
+       
+        snapshot.forEach(function(childSnapshot) {
+        
+            list.appendChild(new Option(childSnapshot.val().nameProject , childSnapshot.val().nameProject));
+        });
+        });
     }
 
 
