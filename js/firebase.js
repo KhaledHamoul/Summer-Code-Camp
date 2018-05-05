@@ -177,7 +177,7 @@
                           <li><b>MENTOR : &nbsp</b> ` + child.mentor + ` </li>
                           <li><b>SKILLS : &nbsp</b> ` + child.skills + ` </li>
                         </ul>
-                        <button onclick="downloadFile(`+ child.projectName +`)"  style="width:150px;margin-left:4px" class="btn btn-primary" type="button">
+                        <button onclick="downloadFile('`+ child.nameProject +`')"  style="width:150px;margin-left:4px" class="btn btn-primary" type="button">
                           <i class="fa fa-download"></i>
                           Download</button>
                           
@@ -210,7 +210,7 @@
     // download le cahier des charges 
     function downloadFile(projectName){
 
-                        
+                        alert(projectName);
                             var ref = firebase.storage();
                             ref.ref('cahiers/'+ projectName + '.pdf').getDownloadURL().then(function(url) {
                             // `url` is the download URL for 'images/stars.jpg'
