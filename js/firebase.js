@@ -65,8 +65,8 @@
                                 succedAlert.innerHTML = `<div  class="alert alert-success alert-dismissible fade show" ><strong>Congratulations ! </strong>You're now registered, stay tuned for the confirmation.
                                                          <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                         </div>` ;
-                            firstName.value = name.value =  email.value =  level.value = motivation.value = skills.value = facebook.value = github.value = linkedin.value = "";
-                            selectedProject.value = "";
+                            firstName.value = name.value =  email.value =  level.value = motivation.value  = "";
+                            selectedProject.value = skills.value = facebook.value = github.value = linkedin.value = "";
                            }).catch(function(){
                                  succedAlert.innerHTML = `<div  class="alert alert-danger alert-dismissible fade show" ><strong>Error ! </strong>try to register again.
                                                          <button type="button" class="close" data-dismiss="alert">&times;</button>
